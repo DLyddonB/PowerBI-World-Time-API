@@ -1,0 +1,16 @@
+let
+    Source = Json.Document(
+        Web.Contents(
+            "http://worldtimeapi.org/api/timezone/",
+            [
+                RelativePath =
+                    "/Europe"&
+                    "/London"
+            ]
+        )
+    ),
+    datetime = Source[datetime],
+    #"Converted to Table" = #table({"Last Refreshed Time"}, {{datetime}}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Converted to Table",{{"Last Refreshed Time", type datetimezone}})
+in
+    #"Changed Type"
