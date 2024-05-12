@@ -1,5 +1,17 @@
 # PowerBI-World-Time-API
-This code [taken from here https://oscarvalerock.medium.com/time-of-the-last-refresh-86b87cbd8d91] allows Power BI Desktop and Power BI service to report the same Last Refresh time. 
+
+So these are the steps to get the LastRefresh time consistent on your Power BI Desktop and on Power BI as a service
+
+1. Go to the PowerQuery window and select 'New Source' and choose web.
+2. Paste the following URL: http://worldtimeapi.org/api/timezone (this will show you all available timezones. To be honest this step can be skipped and go straight to 3.)
+3. Paste the following URL: http://worldtimeapi.org/api/timezone/Europe/London
+4. Next, convert it to a table
+5. The go to 'Transform' and click 'Transpose'
+6. Then click on the 'Promote first row to headers option'
+7. Finally, find the column called 'datetime' and change the Type to Date/Time/Timezone.
+8. Done!
+
+Now in theory, when you drag and drop this onto a card it will return the current time. 
 
 The problem I had that this code: 
 
